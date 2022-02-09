@@ -80,7 +80,7 @@ download.TD.data <- function(asset.codes = 'LTN',
 
   i.try <- 1
   while (TRUE){
-    message('\nDownloading html page (attempt = ', i.try,'|',max.tries,')',sep = '')
+    message('Downloading html page (attempt = ', i.try,'|',max.tries,')',sep = '')
 
     json_code <- RCurl::getURL(
       base.url,
@@ -162,7 +162,7 @@ download.TD.data <- function(asset.codes = 'LTN',
     .fname <- paste0(my.names[my.c], '_', my.years[my.c], '.xls')
     out.file <- file.path(dl.folder, .fname)
 
-    message(paste0('\nDownloading file ', out.file, ' (',my.c, '-', n.links, ')'))
+    message(paste0('Downloading file ', out.file, ' (',my.c, '-', n.links, ')'))
 
     # check if file exists and if it does not contain the current year
     # in its name (thats how tesouro direto stores new data)

@@ -68,7 +68,7 @@ read.TD.files <- function(dl.folder = 'TD Files',
 
   }
 
-  message('\nReading xls data and saving to data.frame')
+  message('Reading xls data and saving to data.frame')
 
   my.f <- list.files(dl.folder, full.names = T)
 
@@ -93,7 +93,7 @@ read.TD.files <- function(dl.folder = 'TD Files',
   my.df <- data.frame()
   for (i.f in my.f){
 
-    message(paste('\n Reading File = ', i.f, sep = ''))
+    message(paste(' Reading File = ', i.f, sep = ''))
 
    # Use capture.output so that no message "DEFINEDNAME" is shown
    # Details in: https://github.com/hadley/readxl/issues/82#issuecomment-166767220
@@ -115,12 +115,12 @@ read.TD.files <- function(dl.folder = 'TD Files',
 
     }
 
-    if (length(sheets)==0) message(paste('\n    Cant find maturities in file ',i.f ))
+    if (length(sheets)==0) message(paste('    Cant find maturities in file ',i.f ))
 
 
     for (i.sheet in sheets) {
 
-      message(paste('\n    Reading Sheet ', i.sheet, sep = ''))
+      message(paste('    Reading Sheet ', i.sheet, sep = ''))
 
       # Read it with readxl (use capture.output to avoid "DEFINEDNAME:"  issue)
       # see: https://github.com/hadley/readxl/issues/111
