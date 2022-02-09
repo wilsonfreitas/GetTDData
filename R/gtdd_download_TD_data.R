@@ -112,10 +112,6 @@ download.TD.data <- function(asset.codes = 'LTN',
 
   json <- jsonlite::fromJSON(json_code)
 
-  # fixing links strings
-
-  my.links <- json$rows$documentFile$downloadHref
-
   # find names in links
 
   my.names <- stringr::str_replace_all(json$rows$documentFile$name, "_", " ")
@@ -131,6 +127,15 @@ download.TD.data <- function(asset.codes = 'LTN',
   # finding years from website
 
   my.years <- stringr::str_match(json$rows$documentFile$name, "\\d{4}")
+  my.years <- as.numeric(my.years)
+
+  # fixing links strings
+  my.links <- json$rows$documentFile$href
+  aux_url <- json$rows$description
+  # TODO for the year of 2012 there is a link in aux_url that is broken
+  #      but the link in documentFile works fine.
+  ix_links <- !is.na(my.years) & my.years != 2012 & !is.na(aux_url)
+  my.links[ix_links] <- aux_url[ix_links]
 
   # find asset code in names
 
